@@ -13,3 +13,15 @@ async def web_server():
     site = web.TCPSite(runner, '0.0.0.0', PORT)
     await site.start()
     logging.info(f"Health-check web server started on port {PORT}")
+#kuch bhi 
+async def web_server():
+    app = web.Application()
+    app.add_routes([web.get('/', handle)])
+
+    runner = web.AppRunner(app)
+    await runner.setup()
+    site = web.TCPSite(runner, '0.0.0.0', PORT)
+    await site.start()
+
+    logging.info(f"Health-check web server started on port {PORT}")
+    return app
